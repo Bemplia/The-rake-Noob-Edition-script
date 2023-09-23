@@ -81,6 +81,14 @@ MainSection:NewToggle("Open ShopGui", "Open a shop anywhere", function(state)
     end
 end)
 
+MainSection:NewToggle("Freeze The Rake", "WOW", function(state)
+if state then
+    game:GetService("Workspace").RakoofNPC.HumanoidRootPart.Anchored = true
+else
+    game:GetService("Workspace").RakoofNPC.HumanoidRootPart.Anchored = false
+end
+end)
+
 local MoveSection = Move:NewSection("Move")
 
 MoveSection:NewButton("Fly (Press B)", "You can fly!", function()
