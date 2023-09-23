@@ -643,7 +643,7 @@ end)
 
 local GUISection = GUI:NewSection("GUI")
 
-GUISection:NewKeybind("Toggle GUI", "", Enum.KeyCode.RightShift, function()
+GUISection:NewKeybind("Toggle GUI", "", Enum.KeyCode.L, function()
 	Library:ToggleUI()
 end)
 
