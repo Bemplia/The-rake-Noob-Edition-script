@@ -85,8 +85,20 @@ MainSection:NewToggle("Freeze The Rake", "WOW", function(state)
 if state then
     game:GetService("Workspace").RakoofNPC.HumanoidRootPart.CFrame = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame
     game:GetService("Workspace").RakoofNPC.HumanoidRootPart.Anchored = true
+    game:GetService("Workspace").RakoofNPC.Head.Anchored = true
+    game:GetService("Workspace").RakoofNPC.Torso.Anchored = true
+    game:GetService("Workspace").RakoofNPC["Left Arm"].Anchored = true
+    game:GetService("Workspace").RakoofNPC["Right Arm"].Anchored = true
+    game:GetService("Workspace").RakoofNPC["Left Leg"].Anchored = true
+    game:GetService("Workspace").RakoofNPC["Right Leg"].Anchored = true
 else
     game:GetService("Workspace").RakoofNPC.HumanoidRootPart.Anchored = false
+    game:GetService("Workspace").RakoofNPC.Head.Anchored = false
+    game:GetService("Workspace").RakoofNPC.Torso.Anchored = false
+    game:GetService("Workspace").RakoofNPC["Left Arm"].Anchored = false
+    game:GetService("Workspace").RakoofNPC["Right Arm"].Anchored = false
+    game:GetService("Workspace").RakoofNPC["Left Leg"].Anchored = false
+    game:GetService("Workspace").RakoofNPC["Right Leg"].Anchored = false
 end
 end)
 
