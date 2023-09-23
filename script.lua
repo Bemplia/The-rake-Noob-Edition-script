@@ -83,6 +83,7 @@ end)
 
 MainSection:NewToggle("Freeze The Rake", "WOW", function(state)
 if state then
+    game:GetService("Workspace").RakoofNPC.HumanoidRootPart.CFrame = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame
     game:GetService("Workspace").RakoofNPC.HumanoidRootPart.Anchored = true
 else
     game:GetService("Workspace").RakoofNPC.HumanoidRootPart.Anchored = false
