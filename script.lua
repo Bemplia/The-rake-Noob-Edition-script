@@ -73,6 +73,36 @@ pcall(function()
 end)
 end)
 
+MainSection:NewButton("No hud", "No hud", function()
+    while wait(0.25) do
+        game:GetService("Players").LocalPlayer.PlayerGui.PowerGui.PowerRestored.Visible = false
+        game:GetService("Players").LocalPlayer.PlayerGui.PowerGui.PowerOut1.Visible = false
+        game:GetService("Players").LocalPlayer.PlayerGui.PowerGui.PowerOut2.Visible = false
+        game:GetService("Players").LocalPlayer.PlayerGui.PlayerStatsGui.LeaderstatsFrame.TopBarFrame.SurvivalsStreakText.Visible = false
+        game:GetService("Players").LocalPlayer.PlayerGui.PlayerStatsGui.LeaderstatsFrame.TopBarFrame.TotalSurvivalsText.Visible = false
+        game:GetService("Players").LocalPlayer.PlayerGui.PlayerStatsGui.LeaderstatsFrame.TopBarFrame.CoinsText.Visible = false
+        game:GetService("Players").LocalPlayer.PlayerGui.PlayerStatsGui.LeaderstatsFrame.TopBarFrame.PointsText.Visible = false
+        game:GetService("Players").LocalPlayer.PlayerGui.MessagesGui.FoundDuck.Visible = false
+        game:GetService("Players").LocalPlayer.PlayerGui.MessagesGui.FoundedAllDucks.Visible = false
+        game:GetService("Players").LocalPlayer.PlayerGui.DayNightGui.FlashEffect.Visible = false
+        game:GetService("Players").LocalPlayer.PlayerGui.DayNightGui.SurviveNight.Visible = false
+        game:GetService("StarterGui").HoursGui["BH_RunText"].Visible = false
+        game:GetService("StarterGui").HoursGui["OH_VignetteImage"].Visible = false
+        game:GetService("StarterGui").HoursGui["BH_TextsFrame"].Visible = false
+        game:GetService("StarterGui").HoursGui["CHH_VignetteImage"].Visible = false
+        game:GetService("StarterGui").HoursGui["CHH_RunText"].Visible = false
+        game:GetService("StarterGui").HoursGui["CH_VignetteImage"].Visible = false
+        game:GetService("StarterGui").HoursGui["CH_RunText"].Visible = false
+        game:GetService("StarterGui").HoursGui["NH_VignetteImage"].Visible = false
+        game:GetService("StarterGui").HoursGui["NH_RunText"].Visible = false
+        game:GetService("StarterGui").HoursGui["BH_VignetteImage"].Visible = false
+        game:GetService("StarterGui").HoursGui["OH_RunText"].Visible = false
+        game:GetService("StarterGui").HoursGui["OH_TextsFrame"].Visible = false
+        game:GetService("StarterGui").HoursGui["OH_TouchOrangeImage"].Visible = false
+        game:GetService("Players").LocalPlayer.PlayerGui.RakeChaseGui.StaticImage.Visible = false
+    end
+end)
+
 MainSection:NewToggle("Open ShopGui", "Open a shop anywhere", function(state)
     if state then
         game.Workspace.LocationsFolder.Shop.EnterShopPart.Size = Vector3.new(999999999999999, 999999999999999, 999999999999999)
@@ -218,6 +248,10 @@ end)
 setreadonly(mt, true)
 end)
 
+MoveSection:NewKeybind("RUN", "RUN", Enum.KeyCode.F, function()
+    game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = 200
+end)
+
 MoveSection:NewSlider("OPRun", "You can run faster!", 500, 34, function(s)
     game.Players.LocalPlayer.Character.CharValues.RunSpeed.Value = s
 end)
@@ -232,7 +266,7 @@ end)
 
 MoveSection:NewToggle("Noclip", "Noclip", function(state)
     if state then
-        while wait(1) do
+        while wait() do
             game.Players.LocalPlayer.Character.Head.CanCollide = false
             game.Players.LocalPlayer.Character.Torso.CanCollide = false
             game.Players.LocalPlayer.Character.HumanoidRootPart.CanCollide = false
@@ -274,47 +308,53 @@ TpSection:NewButton("Go to powerstation", "PowerStation", function()
     game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(333.008698, 9.31251144, 274.509674, -0.0331439041, -4.27595275e-08, 0.999450564, 3.24806031e-08, 1, 4.38601582e-08, -0.999450564, 3.39164536e-08, -0.0331439041)
 end)
 
+TpSection:NewButton("Go to slenderman", "Slenderman", function()
+    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(500.026886, 92.566124, 405.399109, 0.467570394, -9.97178873e-08, -0.883955836, -7.87624455e-09, 1, -1.16974832e-07, 0.883955836, 6.16562232e-08, 0.467570394)
+end)
+
 local EspSection = Esp:NewSection("Esp")
 
 EspSection:NewButton("The Rake", "You can see the rake in the distance", function()
-text = "The Rake"
-item = game:GetService("Workspace").RakoofNPC
-local BillboardGui = Instance.new("BillboardGui")
-local TextLabel = Instance.new("TextLabel")
-local TextLabel1 = Instance.new("TextLabel")  
-BillboardGui.Parent = item
-BillboardGui.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
-BillboardGui.Active = true
-BillboardGui.AlwaysOnTop = true
-BillboardGui.LightInfluence = 1
-BillboardGui.Size = UDim2.new(0, 200, 0, 50)
-BillboardGui.StudsOffset = Vector3.new(0, 2.5, 0)
-TextLabel.Parent = BillboardGui
-TextLabel.BackgroundColor3 = Color3.new(1, 1, 1)
-TextLabel.BackgroundTransparency = 1
-TextLabel.Size = UDim2.new(0, 200, 0, 50)
-TextLabel.Font = Enum.Font.SourceSans
-TextLabel.Text = text
-TextLabel.Font = "Legacy"
-TextLabel.TextColor3 = Color3.new(1, 0, 0)
-TextLabel.TextScaled = false
-TextLabel.TextStrokeTransparency = 0
-TextLabel.TextSize = 8
-TextLabel.TextWrapped = true
-TextLabel1.Parent = BillboardGui
-TextLabel1.BackgroundColor3 = Color3.new(1, 1, 1)
-TextLabel1.BackgroundTransparency = 1
-TextLabel1.Size = UDim2.new(0, 200, 0, 50)
-TextLabel1.Font = Enum.Font.SourceSans
-TextLabel1.Font = "Legacy"
-TextLabel1.TextScaled = false
-TextLabel1.TextStrokeTransparency = 0
-TextLabel1.TextSize = 8
-TextLabel1.TextColor3 = Color3.fromRGB(225, 0, 0)
-TextLabel1.Position = UDim2.new(0, 0, -0.3, 0)
-while true do
-wait(0)
-TextLabel1.Text = "Health: ".. workspace.RakoofNPC.NPC.Health
+while wait(2) do
+    text = "The Rake"
+    item = game:GetService("Workspace").RakoofNPC
+    local BillboardGui = Instance.new("BillboardGui")
+    local TextLabel = Instance.new("TextLabel")
+    local TextLabel1 = Instance.new("TextLabel")  
+    BillboardGui.Parent = item
+    BillboardGui.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
+    BillboardGui.Active = true
+    BillboardGui.AlwaysOnTop = true
+    BillboardGui.LightInfluence = 1
+    BillboardGui.Size = UDim2.new(0, 200, 0, 50)
+    BillboardGui.StudsOffset = Vector3.new(0, 2.5, 0)
+    TextLabel.Parent = BillboardGui
+    TextLabel.BackgroundColor3 = Color3.new(1, 1, 1)
+    TextLabel.BackgroundTransparency = 1
+    TextLabel.Size = UDim2.new(0, 200, 0, 50)
+    TextLabel.Font = Enum.Font.SourceSans
+    TextLabel.Text = text
+    TextLabel.Font = "Legacy"
+    TextLabel.TextColor3 = Color3.new(1, 0, 0)
+    TextLabel.TextScaled = false
+    TextLabel.TextStrokeTransparency = 0
+    TextLabel.TextSize = 8
+    TextLabel.TextWrapped = true
+    TextLabel1.Parent = BillboardGui
+    TextLabel1.BackgroundColor3 = Color3.new(1, 1, 1)
+    TextLabel1.BackgroundTransparency = 1
+    TextLabel1.Size = UDim2.new(0, 200, 0, 50)
+    TextLabel1.Font = Enum.Font.SourceSans
+    TextLabel1.Font = "Legacy"
+    TextLabel1.TextScaled = false
+    TextLabel1.TextStrokeTransparency = 0
+    TextLabel1.TextSize = 8
+    TextLabel1.TextColor3 = Color3.fromRGB(225, 0, 0)
+    TextLabel1.Position = UDim2.new(0, 0, -0.3, 0)
+    while true do
+    wait(0)
+    TextLabel1.Text = "Health: ".. workspace.RakoofNPC.NPC.Health
+    end
 end
 end)
 
@@ -438,7 +478,7 @@ SafeZoneSection:NewDropdown("Plate Material", "Change plate material", {"Plastic
     game.Workspace.EXPLOITPART.Material = s
 end)
 
-SafeZoneSection:NewButton("Go to SafeZone", "You teleport far to the object", function()
+SafeZoneSection:NewKeybind("Go to SafeZone", "You teleport far to the object", Enum.KeyCode.F, function()
 
 
 local Float = Instance.new("Part",workspace);
