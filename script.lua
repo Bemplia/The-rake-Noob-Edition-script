@@ -315,46 +315,45 @@ end)
 local EspSection = Esp:NewSection("Esp")
 
 EspSection:NewButton("The Rake", "You can see the rake in the distance", function()
-while wait(2) do
-    text = "The Rake"
-    item = game:GetService("Workspace").RakoofNPC
-    local BillboardGui = Instance.new("BillboardGui")
-    local TextLabel = Instance.new("TextLabel")
-    local TextLabel1 = Instance.new("TextLabel")  
-    BillboardGui.Parent = item
-    BillboardGui.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
-    BillboardGui.Active = true
-    BillboardGui.AlwaysOnTop = true
-    BillboardGui.LightInfluence = 1
-    BillboardGui.Size = UDim2.new(0, 200, 0, 50)
-    BillboardGui.StudsOffset = Vector3.new(0, 2.5, 0)
-    TextLabel.Parent = BillboardGui
-    TextLabel.BackgroundColor3 = Color3.new(1, 1, 1)
-    TextLabel.BackgroundTransparency = 1
-    TextLabel.Size = UDim2.new(0, 200, 0, 50)
-    TextLabel.Font = Enum.Font.SourceSans
-    TextLabel.Text = text
-    TextLabel.Font = "Legacy"
-    TextLabel.TextColor3 = Color3.new(1, 0, 0)
-    TextLabel.TextScaled = false
-    TextLabel.TextStrokeTransparency = 0
-    TextLabel.TextSize = 8
-    TextLabel.TextWrapped = true
-    TextLabel1.Parent = BillboardGui
-    TextLabel1.BackgroundColor3 = Color3.new(1, 1, 1)
-    TextLabel1.BackgroundTransparency = 1
-    TextLabel1.Size = UDim2.new(0, 200, 0, 50)
-    TextLabel1.Font = Enum.Font.SourceSans
-    TextLabel1.Font = "Legacy"
-    TextLabel1.TextScaled = false
-    TextLabel1.TextStrokeTransparency = 0
-    TextLabel1.TextSize = 8
-    TextLabel1.TextColor3 = Color3.fromRGB(225, 0, 0)
-    TextLabel1.Position = UDim2.new(0, 0, -0.3, 0)
-    while true do
+text = "The Rake"
+item = game:GetService("Workspace").RakoofNPC
+local BillboardGui = Instance.new("BillboardGui")
+local TextLabel = Instance.new("TextLabel")
+local TextLabel1 = Instance.new("TextLabel")  
+BillboardGui.Parent = item
+BillboardGui.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
+BillboardGui.Active = true
+BillboardGui.AlwaysOnTop = true
+BillboardGui.LightInfluence = 1
+BillboardGui.Size = UDim2.new(0, 200, 0, 50)
+BillboardGui.StudsOffset = Vector3.new(0, 2.5, 0)
+TextLabel.Parent = BillboardGui
+TextLabel.BackgroundColor3 = Color3.new(1, 1, 1)
+TextLabel.BackgroundTransparency = 1
+TextLabel.Size = UDim2.new(0, 200, 0, 50)
+TextLabel.Font = Enum.Font.SourceSans
+TextLabel.Text = text
+TextLabel.Font = "Legacy"
+TextLabel.TextColor3 = Color3.new(1, 0, 0)
+TextLabel.TextScaled = false
+TextLabel.TextStrokeTransparency = 0
+TextLabel.TextSize = 8
+TextLabel.TextWrapped = true
+TextLabel1.Parent = BillboardGui
+TextLabel1.BackgroundColor3 = Color3.new(1, 1, 1)
+TextLabel1.BackgroundTransparency = 1
+TextLabel1.Size = UDim2.new(0, 200, 0, 50)
+TextLabel1.Font = Enum.Font.SourceSans
+TextLabel1.Font = "Legacy"
+TextLabel1.TextScaled = false
+TextLabel1.TextStrokeTransparency = 0
+TextLabel1.TextSize = 8
+TextLabel1.TextColor3 = Color3.fromRGB(225, 0, 0)
+TextLabel1.Position = UDim2.new(0, 0, -0.3, 0)
+while true do
     wait(0)
     TextLabel1.Text = "Health: ".. workspace.RakoofNPC.NPC.Health
-    end
+end
 end
 end)
 
