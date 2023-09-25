@@ -354,7 +354,6 @@ while true do
     wait(0)
     TextLabel1.Text = "Health: ".. workspace.RakoofNPC.NPC.Health
 end
-end
 end)
 
 EspSection:NewButton("Power Station", "You can see PowerStation in the distance", function()
