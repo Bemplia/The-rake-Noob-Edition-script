@@ -266,12 +266,19 @@ end)
 
 MoveSection:NewToggle("Noclip", "Noclip", function(state)
     if state then
-        while wait() do
-            game.Players.LocalPlayer.Character.Head.CanCollide = false
-            game.Players.LocalPlayer.Character.Torso.CanCollide = false
-            game.Players.LocalPlayer.Character.HumanoidRootPart.CanCollide = false
+        enable1 = true
+        if enable1 == true then
+            while wait() do
+                game.Players.LocalPlayer.Character.Head.CanCollide = false
+                game.Players.LocalPlayer.Character.Torso.CanCollide = false
+                game.Players.LocalPlayer.Character.HumanoidRootPart.CanCollide = false
+                if enable1 == false then
+                    break
+                end
+            end
         end
     else
+        enable1 = false
         game.Players.LocalPlayer.Character.Head.CanCollide = true
         game.Players.LocalPlayer.Character.Torso.CanCollide = true
         game.Players.LocalPlayer.Character.HumanoidRootPart.CanCollide = true
