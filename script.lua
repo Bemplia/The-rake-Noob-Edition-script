@@ -132,6 +132,25 @@ else
 end
 end)
 
+MainSection:NewToggle("Reach", "Reach", function(state)
+    if state then
+        enable2 = true
+        if enable2 then
+            while wait() do
+                game:GetService("Workspace").RakoofNPC.HumanoidRootPart.Size = Vector3.new(2048, 2048, 2048)
+                wait(0.25)
+                game:GetService("Workspace").RakoofNPC.HumanoidRootPart.Size = Vector3.new(2.38369, 2.38369, 1.19184)
+                if enable2 == false then
+                    break
+                end
+            end
+        end
+    else
+        enable2 = false
+        game:GetService("Workspace").RakoofNPC.HumanoidRootPart.Size = Vector3.new(2.38369, 2.38369, 1.19184)
+    end
+end)
+
 local MoveSection = Move:NewSection("Move")
 
 MoveSection:NewButton("Fly (Press B)", "You can fly!", function()
