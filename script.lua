@@ -1,6 +1,6 @@
-local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/Robojini/Tuturial_UI_Library/main/UI_Template_1"))()
+local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/xHeptc/Kavo-UI-Library/main/source.lua"))()
 
-local Window = Library.CreateLib("The rake Noob Edition V1", "RJTheme5")
+local Window = Library.CreateLib("The rake Noob Edition V1", "Serpent")
 
 local Main = Window:NewTab("Main")
 local Move = Window:NewTab("Move")
@@ -17,6 +17,8 @@ local MainSection = Main:NewSection("Main")
 MainSection:NewButton("AntiKick", "AntiKick", function()
 game:GetService("Workspace").AntiNoclipGlitchPart:Destroy()
 game:GetService("Workspace").LocationsFolder.Shop.OutsidePlrPos:Destroy()
+game:GetService("Workspace").CheemsSecurityValues:Destroy()
+game:GetService("Workspace").AntiExploitDisabled:Destroy()
 end)
 
 MainSection:NewButton("Unlock Chat", "You can see what they write in the chat", function()
@@ -35,42 +37,11 @@ ts:Teleport(game.PlaceId, p)
 end)
 
 MainSection:NewButton("Fullbright", "Lets you see in the dark", function()
-game.Lighting.DepthOfField:Destroy()
-game.Lighting.Atmosphere:Destroy()
-game.Lighting.AmbienceCC:Destroy()
-game.Lighting.ScreamCC:Destroy()
-game.Lighting.ListenModeColor:Destroy()
-game.Lighting.HourCC:Destroy()
-game.Lighting.PowerOutCC:Destroy()
-game.Players.LocalPlayer.Backpack.Flashlight:Destroy()
-game.Players.LocalPlayer.Backpack.BrightFlashlight:Destroy()
-pcall(function()
-	local lighting = game:GetService("Lighting");
-	lighting.Ambient = Color3.fromRGB(255, 255, 255);
-	lighting.Brightness = 1;
-	lighting.FogEnd = 1e10;
-	for i, v in pairs(lighting:GetDescendants()) do
-		if v:IsA("BloomEffect") or v:IsA("BlurEffect") or v:IsA("ColorCorrectionEffect") or v:IsA("SunRaysEffect") then
-			v.Enabled = false;
-		end;
-	end;
-	lighting.Changed:Connect(function()
-		lighting.Ambient = Color3.fromRGB(255, 255, 255);
-		lighting.Brightness = 1;
-		lighting.FogEnd = 1e10;
-	end);
-	spawn(function()
-		local character = game:GetService("Players").LocalPlayer.Character;
-		while wait() do
-			repeat wait() until character ~= nil;
-			if not character.HumanoidRootPart:FindFirstChildWhichIsA("PointLight") then
-				local headlight = Instance.new("PointLight", character.HumanoidRootPart);
-				headlight.Brightness = 1;
-				headlight.Range = 60;
-			end;
-		end;
-	end);
-end)
+Lighting.Brightness = 2
+Lighting.ClockTime = 14
+Lighting.FogEnd = 100000
+Lighting.GlobalShadows = false
+Lighting.OutdoorAmbient = Color3.fromRGB(128, 128, 128)
 end)
 
 MainSection:NewButton("No hud", "No hud", function()
@@ -105,7 +76,7 @@ end)
 
 MainSection:NewToggle("Open ShopGui", "Open a shop anywhere", function(state)
     if state then
-        game.Workspace.LocationsFolder.Shop.EnterShopPart.Size = Vector3.new(999999999999999, 999999999999999, 999999999999999)
+        game.Workspace.LocationsFolder.Shop.EnterShopPart.Size = Vector3.new(2048, 2048, 2048)
     else
         game.Workspace.LocationsFolder.Shop.EnterShopPart.Size = Vector3.new(9, 13, 12)
     end
@@ -132,13 +103,13 @@ else
 end
 end)
 
-MainSection:NewToggle("Reach", "Reach", function(state)
+MainSection:NewToggle("Reach", "Reach but you have a lags", function(state)
     if state then
         enable2 = true
         if enable2 then
             while wait() do
                 game:GetService("Workspace").RakoofNPC.HumanoidRootPart.Size = Vector3.new(2048, 2048, 2048)
-                wait(0.25)
+                wait(0.5)
                 game:GetService("Workspace").RakoofNPC.HumanoidRootPart.Size = Vector3.new(2.38369, 2.38369, 1.19184)
                 if enable2 == false then
                     break
@@ -476,6 +447,10 @@ end)
 
 WorldSection:NewButton("Remove Nature", "", function()
     game.Workspace.NatureFolder:Destroy()
+end)
+
+WorldSection:NewButton("Remove oranges", "", function()
+    game.Workspace.HoursParts_OrangesFolder:Destroy()
 end)
 
 local ScriptsSection = Scripts:NewSection("Scripts")
