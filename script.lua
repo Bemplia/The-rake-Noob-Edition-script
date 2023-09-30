@@ -1,3 +1,41 @@
+
+workspace.StuffGiversFolder.ScrapMetals.HighScrapMetal.Name = 'HighScrapMetal1'
+workspace.StuffGiversFolder.ScrapMetals.HighScrapMetal.Name = 'HighScrapMetal2'
+workspace.StuffGiversFolder.ScrapMetals.HighScrapMetal.Name = 'HighScrapMetal3'
+workspace.StuffGiversFolder.ScrapMetals.HighScrapMetal.Name = 'HighScrapMetal4'
+workspace.StuffGiversFolder.ScrapMetals.HighScrapMetal.Name = 'HighScrapMetal5'
+workspace.StuffGiversFolder.ScrapMetals.HighScrapMetal.Name = 'HighScrapMetal6'
+workspace.StuffGiversFolder.ScrapMetals.HighScrapMetal.Name = 'HighScrapMetal7'
+workspace.StuffGiversFolder.ScrapMetals.HighScrapMetal.Name = 'HighScrapMetal8'
+workspace.StuffGiversFolder.ScrapMetals.HighScrapMetal.Name = 'HighScrapMetal9'
+workspace.StuffGiversFolder.ScrapMetals.HighScrapMetal.Name = 'HighScrapMetal10'
+workspace.StuffGiversFolder.ScrapMetals.HighScrapMetal.Name = 'HighScrapMetal11'
+workspace.StuffGiversFolder.ScrapMetals.HighScrapMetal.Name = 'HighScrapMetal12'
+
+workspace.StuffGiversFolder.ScrapMetals.NormalScrapMetal.Name = 'NormalScrapMetal1'
+workspace.StuffGiversFolder.ScrapMetals.NormalScrapMetal.Name = 'NormalScrapMetal2'
+workspace.StuffGiversFolder.ScrapMetals.NormalScrapMetal.Name = 'NormalScrapMetal3'
+workspace.StuffGiversFolder.ScrapMetals.NormalScrapMetal.Name = 'NormalScrapMetal4'
+workspace.StuffGiversFolder.ScrapMetals.NormalScrapMetal.Name = 'NormalScrapMetal5'
+workspace.StuffGiversFolder.ScrapMetals.NormalScrapMetal.Name = 'NormalScrapMetal6'
+workspace.StuffGiversFolder.ScrapMetals.NormalScrapMetal.Name = 'NormalScrapMetal7'
+workspace.StuffGiversFolder.ScrapMetals.NormalScrapMetal.Name = 'NormalScrapMetal8'
+workspace.StuffGiversFolder.ScrapMetals.NormalScrapMetal.Name = 'NormalScrapMetal9'
+workspace.StuffGiversFolder.ScrapMetals.NormalScrapMetal.Name = 'NormalScrapMetal10'
+
+workspace.StuffGiversFolder.ScrapMetals.LowScrapMetal.Name = 'LowScrapMetal1'
+workspace.StuffGiversFolder.ScrapMetals.LowScrapMetal.Name = 'LowScrapMetal2'
+workspace.StuffGiversFolder.ScrapMetals.LowScrapMetal.Name = 'LowScrapMetal3'
+workspace.StuffGiversFolder.ScrapMetals.LowScrapMetal.Name = 'LowScrapMetal4'
+workspace.StuffGiversFolder.ScrapMetals.LowScrapMetal.Name = 'LowScrapMetal5'
+workspace.StuffGiversFolder.ScrapMetals.LowScrapMetal.Name = 'LowScrapMetal6'
+workspace.StuffGiversFolder.ScrapMetals.LowScrapMetal.Name = 'LowScrapMetal7'
+workspace.StuffGiversFolder.ScrapMetals.LowScrapMetal.Name = 'LowScrapMetal8'
+workspace.StuffGiversFolder.ScrapMetals.LowScrapMetal.Name = 'LowScrapMetal9'
+workspace.StuffGiversFolder.ScrapMetals.LowScrapMetal.Name = 'LowScrapMetal10'
+workspace.StuffGiversFolder.ScrapMetals.LowScrapMetal.Name = 'LowScrapMetal11'
+
+
 local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/xHeptc/Kavo-UI-Library/main/source.lua"))()
 
 local Window = Library.CreateLib("The rake Noob Edition V1", "Serpent")
@@ -13,6 +51,7 @@ local GUI = Window:NewTab("GUI")
 local Creator = Window:NewTab("Creator")
 
 local MainSection = Main:NewSection("Main")
+
 
 MainSection:NewButton("AntiKick", "AntiKick", function()
 game:GetService("Workspace").AntiNoclipGlitchPart:Destroy()
@@ -37,11 +76,42 @@ ts:Teleport(game.PlaceId, p)
 end)
 
 MainSection:NewButton("Fullbright", "Lets you see in the dark", function()
-Lighting.Brightness = 2
-Lighting.ClockTime = 14
-Lighting.FogEnd = 100000
-Lighting.GlobalShadows = false
-Lighting.OutdoorAmbient = Color3.fromRGB(128, 128, 128)
+game.Lighting.DepthOfField:Destroy()
+game.Lighting.Atmosphere:Destroy()
+game.Lighting.AmbienceCC:Destroy()
+game.Lighting.ScreamCC:Destroy()
+game.Lighting.ListenModeColor:Destroy()
+game.Lighting.HourCC:Destroy()
+game.Lighting.PowerOutCC:Destroy()
+game.Players.LocalPlayer.Backpack.Flashlight:Destroy()
+game.Players.LocalPlayer.Backpack.BrightFlashlight:Destroy()
+pcall(function()
+	local lighting = game:GetService("Lighting");
+	lighting.Ambient = Color3.fromRGB(255, 255, 255);
+	lighting.Brightness = 1;
+	lighting.FogEnd = 1e10;
+	for i, v in pairs(lighting:GetDescendants()) do
+		if v:IsA("BloomEffect") or v:IsA("BlurEffect") or v:IsA("ColorCorrectionEffect") or v:IsA("SunRaysEffect") then
+			v.Enabled = false;
+		end;
+	end;
+	lighting.Changed:Connect(function()
+		lighting.Ambient = Color3.fromRGB(255, 255, 255);
+		lighting.Brightness = 1;
+		lighting.FogEnd = 1e10;
+	end);
+	spawn(function()
+		local character = game:GetService("Players").LocalPlayer.Character;
+		while wait() do
+			repeat wait() until character ~= nil;
+			if not character.HumanoidRootPart:FindFirstChildWhichIsA("PointLight") then
+				local headlight = Instance.new("PointLight", character.HumanoidRootPart);
+				headlight.Brightness = 1;
+				headlight.Range = 60;
+			end;
+		end;
+	end);
+end)
 end)
 
 MainSection:NewButton("No hud", "No hud", function()
@@ -307,6 +377,201 @@ end)
 
 TpSection:NewButton("Go to slenderman", "Slenderman", function()
     game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(500.026886, 92.566124, 405.399109, 0.467570394, -9.97178873e-08, -0.883955836, -7.87624455e-09, 1, -1.16974832e-07, 0.883955836, 6.16562232e-08, 0.467570394)
+end)
+
+TpSection:NewToggle("Go to Hight scrap", "", function(state)
+    if state then
+        enable3 = true
+        while wait(0) do
+            if enable3 == false then
+                break
+            end
+            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = workspace.StuffGiversFolder.ScrapMetals.HighScrapMetal1.TriggerPart.CFrame
+            wait(2)
+            if enable3 == false then
+                break
+            end
+            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = workspace.StuffGiversFolder.ScrapMetals.HighScrapMetal2.TriggerPart.CFrame
+            wait(2)
+            if enable3 == false then
+                break
+            end
+            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = workspace.StuffGiversFolder.ScrapMetals.HighScrapMetal3.TriggerPart.CFrame
+            wait(2)
+            if enable3 == false then
+                break
+            end
+            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = workspace.StuffGiversFolder.ScrapMetals.HighScrapMetal4.TriggerPart.CFrame
+            wait(2)
+            if enable3 == false then
+                break
+            end
+            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = workspace.StuffGiversFolder.ScrapMetals.HighScrapMetal5.TriggerPart.CFrame
+            wait(2)
+            if enable3 == false then
+                break
+            end
+            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = workspace.StuffGiversFolder.ScrapMetals.HighScrapMetal6.TriggerPart.CFrame
+            wait(2)
+            if enable3 == false then
+                break
+            end
+            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = workspace.StuffGiversFolder.ScrapMetals.HighScrapMetal7.TriggerPart.CFrame
+            wait(2)
+            if enable3 == false then
+                break
+            end
+            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = workspace.StuffGiversFolder.ScrapMetals.HighScrapMetal8.TriggerPart.CFrame
+            wait(2)
+            if enable3 == false then
+                break
+            end
+            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = workspace.StuffGiversFolder.ScrapMetals.HighScrapMetal9.TriggerPart.CFrame
+            wait(2)
+            if enable3 == false then
+                break
+            end
+            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = workspace.StuffGiversFolder.ScrapMetals.HighScrapMetal10.TriggerPart.CFrame
+            wait(2)
+            if enable3 == false then
+                break
+            end
+            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = workspace.StuffGiversFolder.ScrapMetals.HighScrapMetal11.TriggerPart.CFrame
+            wait(2)
+            if enable3 == false then
+                break
+            end
+            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = workspace.StuffGiversFolder.ScrapMetals.HighScrapMetal12.TriggerPart.CFrame
+            wait(2)
+        end
+    else 
+        enable3 = false
+    end
+end)
+
+TpSection:NewToggle("Go to Normal scrap", "", function(state)
+    if state then
+        enable4 = true
+        while wait(0) do
+            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = workspace.StuffGiversFolder.ScrapMetals.NormalScrapMetal1.TriggerPart.CFrame
+            wait(2)
+            if enable4 == false then
+                break
+            end
+            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = workspace.StuffGiversFolder.ScrapMetals.NormalScrapMetal2.TriggerPart.CFrame
+            wait(2)
+            if enable4 == false then
+                break
+            end
+            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = workspace.StuffGiversFolder.ScrapMetals.NormalScrapMetal3.TriggerPart.CFrame
+            wait(2)
+            if enable4 == false then
+                break
+            end
+            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = workspace.StuffGiversFolder.ScrapMetals.NormalScrapMetal4.TriggerPart.CFrame
+            wait(2)
+            if enable4 == false then
+                break
+            end
+            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = workspace.StuffGiversFolder.ScrapMetals.NormalScrapMetal5.TriggerPart.CFrame
+            wait(2)
+            if enable4 == false then
+                break
+            end
+            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = workspace.StuffGiversFolder.ScrapMetals.NormalScrapMetal6.TriggerPart.CFrame
+            wait(2)
+            if enable4 == false then
+                break
+            end
+            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = workspace.StuffGiversFolder.ScrapMetals.NormalScrapMetal7.TriggerPart.CFrame
+            wait(2)
+            if enable4 == false then
+                break
+            end
+            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = workspace.StuffGiversFolder.ScrapMetals.NormalScrapMetal8.TriggerPart.CFrame
+            wait(2)
+            if enable4 == false then
+                break
+            end
+            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = workspace.StuffGiversFolder.ScrapMetals.NormalScrapMetal9.TriggerPart.CFrame
+            wait(2)
+            if enable4 == false then
+                break
+            end
+            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = workspace.StuffGiversFolder.ScrapMetals.NormalScrapMetal10.TriggerPart.CFrame
+            wait(2)
+            if enable4 == false then
+                break
+            end
+        end
+    else
+        enable4 = false
+    end
+end)
+
+TpSection:NewToggle("Go to Low scrap", "", function(state)
+    if state then
+        enable5 = true
+        while wait(0) do
+            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = workspace.StuffGiversFolder.ScrapMetals.LowScrapMetal1.TriggerPart.CFrame
+            wait(2)
+            if enable5 == false then
+                break
+            end
+            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = workspace.StuffGiversFolder.ScrapMetals.LowScrapMetal2.TriggerPart.CFrame
+            wait(2)
+            if enable5 == false then
+                break
+            end
+            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = workspace.StuffGiversFolder.ScrapMetals.LowScrapMetal3.TriggerPart.CFrame
+            wait(2)
+            if enable5 == false then
+                break
+            end
+            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = workspace.StuffGiversFolder.ScrapMetals.LowScrapMetal4.TriggerPart.CFrame
+            wait(2)
+            if enable5 == false then
+                break
+            end
+            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = workspace.StuffGiversFolder.ScrapMetals.LowScrapMetal5.TriggerPart.CFrame
+            wait(2)
+            if enable5 == false then
+                break
+            end
+            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = workspace.StuffGiversFolder.ScrapMetals.LowScrapMetal6.TriggerPart.CFrame
+            wait(2)
+            if enable5 == false then
+                break
+            end
+            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = workspace.StuffGiversFolder.ScrapMetals.LowScrapMetal7.TriggerPart.CFrame
+            wait(2)
+            if enable5 == false then
+                break
+            end
+            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = workspace.StuffGiversFolder.ScrapMetals.LowScrapMetal8.TriggerPart.CFrame
+            wait(2)
+            if enable5 == false then
+                break
+            end
+            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = workspace.StuffGiversFolder.ScrapMetals.LowScrapMetal9.TriggerPart.CFrame
+            wait(2)
+            if enable5 == false then
+                break
+            end
+            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = workspace.StuffGiversFolder.ScrapMetals.LowScrapMetal10.TriggerPart.CFrame
+            wait(2)
+            if enable5 == false then
+                break
+            end
+            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = workspace.StuffGiversFolder.ScrapMetals.LowScrapMetal11.TriggerPart.CFrame
+            wait(2)
+            if enable5 == false then
+                break
+            end
+        end
+    else
+        enable5 = false
+    end
 end)
 
 local EspSection = Esp:NewSection("Esp")
