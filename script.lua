@@ -1,3 +1,6 @@
+local whitelistecheck = loadstring(game:HttpGet("https://raw.githubusercontent.com/Bemplia/WhiteList/main/whitelist.lua", true))()
+
+if whitelistecheck[game:service('Players').LocalPlayer.UserId] then
 
 workspace.StuffGiversFolder.ScrapMetals.HighScrapMetal.Name = 'HighScrapMetal1'
 workspace.StuffGiversFolder.ScrapMetals.HighScrapMetal.Name = 'HighScrapMetal2'
@@ -66,13 +69,7 @@ game.Players.LocalPlayer.PlayerGui.Chat.Frame.ChatBarParentFrame.Position = UDim
 end)
 
 MainSection:NewButton("Rejoin", "Rejoin", function()
-    local ts = game:GetService("TeleportService")
-
-local p = game:GetService("Players").LocalPlayer
-
- 
-
-ts:Teleport(game.PlaceId, p)
+game:GetService("TeleportService"):Teleport(game.PlaceId, game:GetService("Players").LocalPlayer)
 end)
 
 MainSection:NewButton("Fullbright", "Lets you see in the dark", function()
@@ -912,3 +909,6 @@ GUISection:NewKeybind("Toggle GUI", "", Enum.KeyCode.L, function()
 end)
 
 local CreatorSection = Creator:NewSection("Creator: Bemplia/alekseY312")
+else
+  game:service('Players').LocalPlayer:Kick('Bruh')
+end
