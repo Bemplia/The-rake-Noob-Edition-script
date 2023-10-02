@@ -13,7 +13,6 @@ pcall (function()
     workspace.StuffGiversFolder.ScrapMetals.HighScrapMetal.Name = 'HighScrapMetal9'
     workspace.StuffGiversFolder.ScrapMetals.HighScrapMetal.Name = 'HighScrapMetal10'
     workspace.StuffGiversFolder.ScrapMetals.HighScrapMetal.Name = 'HighScrapMetal11'
-    workspace.StuffGiversFolder.ScrapMetals.HighScrapMetal.Name = 'HighScrapMetal12'
 
     workspace.StuffGiversFolder.ScrapMetals.NormalScrapMetal.Name = 'NormalScrapMetal1'
     workspace.StuffGiversFolder.ScrapMetals.NormalScrapMetal.Name = 'NormalScrapMetal2'
@@ -21,10 +20,7 @@ pcall (function()
     workspace.StuffGiversFolder.ScrapMetals.NormalScrapMetal.Name = 'NormalScrapMetal4'
     workspace.StuffGiversFolder.ScrapMetals.NormalScrapMetal.Name = 'NormalScrapMetal5'
     workspace.StuffGiversFolder.ScrapMetals.NormalScrapMetal.Name = 'NormalScrapMetal6'
-    workspace.StuffGiversFolder.ScrapMetals.NormalScrapMetal.Name = 'NormalScrapMetal7'
-    workspace.StuffGiversFolder.ScrapMetals.NormalScrapMetal.Name = 'NormalScrapMetal8'
-    workspace.StuffGiversFolder.ScrapMetals.NormalScrapMetal.Name = 'NormalScrapMetal9'
-    workspace.StuffGiversFolder.ScrapMetals.NormalScrapMetal.Name = 'NormalScrapMetal10'
+    game:GetService("Workspace").StuffGiversFolder.ScrapMetals.NormalScrapMetal1.TriggerPart.CFrame = CFrame.new(-120.259315, 34.366066, -268.22995, -0.978445053, -0.0865846053, -0.187478811, -0.086826548, 0.99619925, -0.00693681836, 0.187366903, 0.00949086249, -0.982244074)
 
     workspace.StuffGiversFolder.ScrapMetals.LowScrapMetal.Name = 'LowScrapMetal1'
     workspace.StuffGiversFolder.ScrapMetals.LowScrapMetal.Name = 'LowScrapMetal2'
@@ -36,7 +32,6 @@ pcall (function()
     workspace.StuffGiversFolder.ScrapMetals.LowScrapMetal.Name = 'LowScrapMetal8'
     workspace.StuffGiversFolder.ScrapMetals.LowScrapMetal.Name = 'LowScrapMetal9'
     workspace.StuffGiversFolder.ScrapMetals.LowScrapMetal.Name = 'LowScrapMetal10'
-    workspace.StuffGiversFolder.ScrapMetals.LowScrapMetal.Name = 'LowScrapMetal11'
 end)
 
 local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/xHeptc/Kavo-UI-Library/main/source.lua"))()
@@ -112,33 +107,10 @@ end)
 end)
 
 MainSection:NewButton("No hud", "No hud", function()
-    while wait(0.25) do
-        game:GetService("Players").LocalPlayer.PlayerGui.PowerGui.PowerRestored.Visible = false
-        game:GetService("Players").LocalPlayer.PlayerGui.PowerGui.PowerOut1.Visible = false
-        game:GetService("Players").LocalPlayer.PlayerGui.PowerGui.PowerOut2.Visible = false
-        game:GetService("Players").LocalPlayer.PlayerGui.PlayerStatsGui.LeaderstatsFrame.TopBarFrame.SurvivalsStreakText.Visible = false
-        game:GetService("Players").LocalPlayer.PlayerGui.PlayerStatsGui.LeaderstatsFrame.TopBarFrame.TotalSurvivalsText.Visible = false
-        game:GetService("Players").LocalPlayer.PlayerGui.PlayerStatsGui.LeaderstatsFrame.TopBarFrame.CoinsText.Visible = false
-        game:GetService("Players").LocalPlayer.PlayerGui.PlayerStatsGui.LeaderstatsFrame.TopBarFrame.PointsText.Visible = false
-        game:GetService("Players").LocalPlayer.PlayerGui.MessagesGui.FoundDuck.Visible = false
-        game:GetService("Players").LocalPlayer.PlayerGui.MessagesGui.FoundedAllDucks.Visible = false
-        game:GetService("Players").LocalPlayer.PlayerGui.DayNightGui.FlashEffect.Visible = false
-        game:GetService("Players").LocalPlayer.PlayerGui.DayNightGui.SurviveNight.Visible = false
-        game:GetService("StarterGui").HoursGui["BH_RunText"].Visible = false
-        game:GetService("StarterGui").HoursGui["OH_VignetteImage"].Visible = false
-        game:GetService("StarterGui").HoursGui["BH_TextsFrame"].Visible = false
-        game:GetService("StarterGui").HoursGui["CHH_VignetteImage"].Visible = false
-        game:GetService("StarterGui").HoursGui["CHH_RunText"].Visible = false
-        game:GetService("StarterGui").HoursGui["CH_VignetteImage"].Visible = false
-        game:GetService("StarterGui").HoursGui["CH_RunText"].Visible = false
-        game:GetService("StarterGui").HoursGui["NH_VignetteImage"].Visible = false
-        game:GetService("StarterGui").HoursGui["NH_RunText"].Visible = false
-        game:GetService("StarterGui").HoursGui["BH_VignetteImage"].Visible = false
-        game:GetService("StarterGui").HoursGui["OH_RunText"].Visible = false
-        game:GetService("StarterGui").HoursGui["OH_TextsFrame"].Visible = false
-        game:GetService("StarterGui").HoursGui["OH_TouchOrangeImage"].Visible = false
-        game:GetService("Players").LocalPlayer.PlayerGui.RakeChaseGui.StaticImage.Visible = false
-    end
+    game.Players.LocalPlayer.PlayerGui.DayNightGui:Destroy()
+    game.Players.LocalPlayer.PlayerGui.RakeChaseGui:Destroy()
+    game.Players.LocalPlayer.PlayerGui.PowerGui:Destroy()
+    game.Players.LocalPlayer.PlayerGui.HoursGui:Destroy()
 end)
 
 MainSection:NewToggle("Open ShopGui", "Open a shop anywhere", function(state)
@@ -435,11 +407,6 @@ TpSection:NewToggle("Go to Hight scrap", "", function(state)
             end
             game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = workspace.StuffGiversFolder.ScrapMetals.HighScrapMetal11.TriggerPart.CFrame
             wait(2)
-            if enable3 == false then
-                break
-            end
-            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = workspace.StuffGiversFolder.ScrapMetals.HighScrapMetal12.TriggerPart.CFrame
-            wait(2)
         end
     else 
         enable3 = false
@@ -477,29 +444,6 @@ TpSection:NewToggle("Go to Normal scrap", "", function(state)
             end
             game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = workspace.StuffGiversFolder.ScrapMetals.NormalScrapMetal6.TriggerPart.CFrame
             wait(2)
-            if enable4 == false then
-                break
-            end
-            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = workspace.StuffGiversFolder.ScrapMetals.NormalScrapMetal7.TriggerPart.CFrame
-            wait(2)
-            if enable4 == false then
-                break
-            end
-            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = workspace.StuffGiversFolder.ScrapMetals.NormalScrapMetal8.TriggerPart.CFrame
-            wait(2)
-            if enable4 == false then
-                break
-            end
-            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = workspace.StuffGiversFolder.ScrapMetals.NormalScrapMetal9.TriggerPart.CFrame
-            wait(2)
-            if enable4 == false then
-                break
-            end
-            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = workspace.StuffGiversFolder.ScrapMetals.NormalScrapMetal10.TriggerPart.CFrame
-            wait(2)
-            if enable4 == false then
-                break
-            end
         end
     else
         enable4 = false
@@ -557,14 +501,6 @@ TpSection:NewToggle("Go to Low scrap", "", function(state)
             end
             game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = workspace.StuffGiversFolder.ScrapMetals.LowScrapMetal10.TriggerPart.CFrame
             wait(2)
-            if enable5 == false then
-                break
-            end
-            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = workspace.StuffGiversFolder.ScrapMetals.LowScrapMetal11.TriggerPart.CFrame
-            wait(2)
-            if enable5 == false then
-                break
-            end
         end
     else
         enable5 = false
@@ -578,7 +514,9 @@ text = "The Rake"
 item = game:GetService("Workspace").RakoofNPC
 local BillboardGui = Instance.new("BillboardGui")
 local TextLabel = Instance.new("TextLabel")
-local TextLabel1 = Instance.new("TextLabel")  
+local TextLabel1 = Instance.new("TextLabel")
+local rake = game:GetService("Workspace").RakoofNPC
+local esp = Instance.new("BoxHandleAdornment",rake)  
 BillboardGui.Parent = item
 BillboardGui.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
 BillboardGui.Active = true
@@ -609,6 +547,12 @@ TextLabel1.TextStrokeTransparency = 0
 TextLabel1.TextSize = 8
 TextLabel1.TextColor3 = Color3.fromRGB(225, 0, 0)
 TextLabel1.Position = UDim2.new(0, 0, -0.3, 0)
+esp.Adornee = rake
+esp.ZIndex = 0
+esp.AlwaysOnTop = true
+esp.Color3 = Color3.fromRGB(252, 3, 3)
+esp.Transparency = 0.5
+esp.Size = Vector3.new(5,6,1,5)
 while true do
     wait(0)
     TextLabel1.Text = "Health: ".. workspace.RakoofNPC.NPC.Health
@@ -697,7 +641,7 @@ TextLabel1.TextSize = 8
 TextLabel1.TextWrapped = true
 while true do
 wait(0)
-TextLabel1.Text = "GameTime: ".. game:GetService("Workspace").LocationsFolder.Shop.Construction.Clock.TextPart.SurfaceGui.TimerTextLabel.Text
+TextLabel1.Text = "GameTime: ".. game:GetService("ReplicatedStorage").GameTimer.Value
 end
 end)
 
