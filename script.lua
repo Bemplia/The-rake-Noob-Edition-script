@@ -20,7 +20,6 @@ pcall (function()
     workspace.StuffGiversFolder.ScrapMetals.NormalScrapMetal.Name = 'NormalScrapMetal4'
     workspace.StuffGiversFolder.ScrapMetals.NormalScrapMetal.Name = 'NormalScrapMetal5'
     workspace.StuffGiversFolder.ScrapMetals.NormalScrapMetal.Name = 'NormalScrapMetal6'
-    game:GetService("Workspace").StuffGiversFolder.ScrapMetals.NormalScrapMetal1.TriggerPart.CFrame = CFrame.new(-120.259315, 34.366066, -268.22995, -0.978445053, -0.0865846053, -0.187478811, -0.086826548, 0.99619925, -0.00693681836, 0.187366903, 0.00949086249, -0.982244074)
 
     workspace.StuffGiversFolder.ScrapMetals.LowScrapMetal.Name = 'LowScrapMetal1'
     workspace.StuffGiversFolder.ScrapMetals.LowScrapMetal.Name = 'LowScrapMetal2'
@@ -34,11 +33,16 @@ pcall (function()
     workspace.StuffGiversFolder.ScrapMetals.LowScrapMetal.Name = 'LowScrapMetal10'
 end)
 
+player = game.Players.LocalPlayer.Character.HumanoidRootPart
+
+game:GetService("Workspace").StuffGiversFolder.ScrapMetals.NormalScrapMetal1.TriggerPart.CFrame = CFrame.new(-120.259315, 34.366066, -268.22995, -0.978445053, -0.0865846053, -0.187478811, -0.086826548, 0.99619925, -0.00693681836, 0.187366903, 0.00949086249, -0.982244074)
+
 local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/xHeptc/Kavo-UI-Library/main/source.lua"))()
 
 local Window = Library.CreateLib("The rake Noob Edition V1", "Serpent")
 
 local Main = Window:NewTab("Main")
+local Combat = Window:NewTab("Combat")
 local Move = Window:NewTab("Move")
 local Tp = Window:NewTab("Tp")  
 local Esp = Window:NewTab("Esp")
@@ -121,9 +125,11 @@ MainSection:NewToggle("Open ShopGui", "Open a shop anywhere", function(state)
     end
 end)
 
-MainSection:NewToggle("Freeze The Rake", "WOW", function(state)
+local CombatSection = Combat:NewSection("Combat")
+
+CombatSection:NewToggle("Freeze The Rake", "WOW", function(state)
 if state then
-    game:GetService("Workspace").RakoofNPC.HumanoidRootPart.CFrame = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame
+    game:GetService("Workspace").RakoofNPC.HumanoidRootPart.CFrame = player.CFrame
     game:GetService("Workspace").RakoofNPC.HumanoidRootPart.Anchored = true
     game:GetService("Workspace").RakoofNPC.Head.Anchored = true
     game:GetService("Workspace").RakoofNPC.Torso.Anchored = true
@@ -142,7 +148,7 @@ else
 end
 end)
 
-MainSection:NewToggle("Reach", "Reach but you have a lags", function(state)
+CombatSection:NewToggle("Reach", "Reach but you have a lags", function(state)
     if state then
         enable2 = true
         if enable2 then
@@ -159,6 +165,28 @@ MainSection:NewToggle("Reach", "Reach but you have a lags", function(state)
         enable2 = false
         game:GetService("Workspace").RakoofNPC.HumanoidRootPart.Size = Vector3.new(2.38369, 2.38369, 1.19184)
     end
+end)
+
+CombatSection:NewToggle("Enable Tp Aura", "", function(state)
+    if state then
+        enable6 = true
+    else
+        enable6 = false
+        game:GetService("Workspace").RakoofNPC.HumanoidRootPart.Size = Vector3.new(2.38369, 2.38369, 1.19184)
+    end
+end)
+
+CombatSection:NewKeybind("TpAura", "", Enum.KeyCode.Z, function()
+if enable6 then
+    game:GetService("Workspace").RakoofNPC.HumanoidRootPart.Size = Vector3.new(10, 10, 10)
+    local tp = Instance.new("Part",workspace)
+    tp.Name = 'TpPart'
+    tp.CFrame = player.CFrame
+    player.CFrame = game:GetService("Workspace").RakoofNPC.HumanoidRootPart.CFrame
+    wait(0.2)
+    player.CFrame = workspace.TpPart.CFrame
+    tp:Destroy()
+end
 end)
 
 local MoveSection = Move:NewSection("Move")
@@ -657,6 +685,16 @@ end)
 
 WorldSection:NewButton("Remove oranges", "", function()
     game.Workspace.HoursParts_OrangesFolder:Destroy()
+end)
+
+WorldSection:NewButton("Remove Crawling", "", function()
+while wait(0) do
+    pcall (function()
+    game.Players.LocalPlayer.Character.CharValues.Crawling.Value = false
+    game.Players.LocalPlayer.Character.CharValues.NearRake.Value = false
+    game.Players.LocalPlayer.Character.CharValues.HumanoidLowHealth.Value = false
+    end)
+end
 end)
 
 local ScriptsSection = Scripts:NewSection("Scripts")
