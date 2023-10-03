@@ -33,9 +33,13 @@ pcall (function()
     workspace.StuffGiversFolder.ScrapMetals.LowScrapMetal.Name = 'LowScrapMetal10'
 end)
 
+pcall (function()
 player = game.Players.LocalPlayer.Character.HumanoidRootPart
+end)
 
+pcall (function()
 game:GetService("Workspace").StuffGiversFolder.ScrapMetals.NormalScrapMetal1.TriggerPart.CFrame = CFrame.new(-120.259315, 34.366066, -268.22995, -0.978445053, -0.0865846053, -0.187478811, -0.086826548, 0.99619925, -0.00693681836, 0.187366903, 0.00949086249, -0.982244074)
+end)
 
 local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/xHeptc/Kavo-UI-Library/main/source.lua"))()
 
@@ -892,5 +896,5 @@ end)
 
 local CreatorSection = Creator:NewSection("Creator: Bemplia/alekseY312")
 else
-  game:service('Players').LocalPlayer:Kick('Bruh')
+  game:service('Players').LocalPlayer:Kick('Bruh. You are not found in white list.')
 end
