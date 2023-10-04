@@ -33,9 +33,7 @@ pcall (function()
     workspace.StuffGiversFolder.ScrapMetals.LowScrapMetal.Name = 'LowScrapMetal10'
 end)
 
-pcall (function()
 player = game.Players.LocalPlayer.Character.HumanoidRootPart
-end)
 
 pcall (function()
 game:GetService("Workspace").StuffGiversFolder.ScrapMetals.NormalScrapMetal1.TriggerPart.CFrame = CFrame.new(-120.259315, 34.366066, -268.22995, -0.978445053, -0.0865846053, -0.187478811, -0.086826548, 0.99619925, -0.00693681836, 0.187366903, 0.00949086249, -0.982244074)
@@ -171,26 +169,29 @@ CombatSection:NewToggle("Reach", "Reach but you have a lags", function(state)
     end
 end)
 
-CombatSection:NewToggle("Enable Tp Aura", "", function(state)
+CombatSection:NewToggle("Tp Aura", "", function(state)
     if state then
         enable6 = true
+        while enable6 do
+            if game:GetService("UserInputService"):GetLastInputType() == Enum.UserInputType.MouseButton1 then
+                game:GetService("Workspace").RakoofNPC.HumanoidRootPart.Size = Vector3.new(10, 10, 10)
+                local tp = Instance.new("Part",workspace)
+                tp.Name = 'TpPart'
+                tp.CFrame = player.CFrame
+                player.CFrame = game:GetService("Workspace").RakoofNPC.HumanoidRootPart.CFrame
+                wait(0.2)
+                player.CFrame = workspace.TpPart.CFrame
+                tp:Destroy()
+            end
+            wait()
+            if enable6 == false then 
+                break
+            end
+        end
     else
         enable6 = false
         game:GetService("Workspace").RakoofNPC.HumanoidRootPart.Size = Vector3.new(2.38369, 2.38369, 1.19184)
     end
-end)
-
-CombatSection:NewKeybind("TpAura", "", Enum.KeyCode.Z, function()
-if enable6 then
-    game:GetService("Workspace").RakoofNPC.HumanoidRootPart.Size = Vector3.new(10, 10, 10)
-    local tp = Instance.new("Part",workspace)
-    tp.Name = 'TpPart'
-    tp.CFrame = player.CFrame
-    player.CFrame = game:GetService("Workspace").RakoofNPC.HumanoidRootPart.CFrame
-    wait(0.2)
-    player.CFrame = workspace.TpPart.CFrame
-    tp:Destroy()
-end
 end)
 
 local MoveSection = Move:NewSection("Move")
@@ -294,7 +295,21 @@ if Nav.Flying then
 end]]
 end)
 
-MoveSection:NewButton("Inf Stamina", "You can run forever", function()
+MoveSection:NewToggle("Inf Stamina", "You can run forever", function(state)
+
+if state then
+    enable7 = true
+    while enable7 do   
+        if game.Players.LocalPlayer.Character.CharValues.StaminaPercentValue.Value < '100' then
+            game.Players.LocalPlayer.Character.CharValues.StaminaPercentValue.Value = '100'
+        end
+        wait()
+    end
+else
+    enable7 = false
+end
+
+--[[
 local setreadonly = setreadonly or make_writeable
 local pussymode = game.workspace[game.Players.LocalPlayer.Name].CharValues.StaminaPercentValue
 local mt = getrawmetatable(game)
@@ -306,7 +321,7 @@ return 100
 end
 return old(tbl, idx)
 end)
-setreadonly(mt, true)
+setreadonly(mt, true)]]
 end)
 
 MoveSection:NewKeybind("RUN", "RUN", Enum.KeyCode.F, function()
